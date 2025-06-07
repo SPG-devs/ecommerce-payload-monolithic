@@ -55,17 +55,17 @@ export const seed = async (payload: Payload): Promise<void> => {
   payload.logger.info(`— Seeding media...`)
 
   const [image1Doc, image2Doc, image3Doc] = await Promise.all([
-    await payload.create({
+     payload.create({
       collection: 'media',
       filePath: path.resolve(__dirname, 'image-1.jpg'),
       data: image1,
     }),
-    await payload.create({
+     payload.create({
       collection: 'media',
       filePath: path.resolve(__dirname, 'image-2.jpg'),
       data: image2,
     }),
-    await payload.create({
+     payload.create({
       collection: 'media',
       filePath: path.resolve(__dirname, 'image-3.jpg'),
       data: image3,
@@ -85,19 +85,19 @@ export const seed = async (payload: Payload): Promise<void> => {
   payload.logger.info(`— Seeding categories...`)
 
   const [apparelCategory, ebooksCategory, coursesCategory] = await Promise.all([
-    await payload.create({
+    payload.create({
       collection: 'categories',
       data: {
         title: 'Apparel',
       },
     }),
-    await payload.create({
+    payload.create({
       collection: 'categories',
       data: {
         title: 'E-books',
       },
     }),
-    await payload.create({
+    payload.create({
       collection: 'categories',
       data: {
         title: 'Online courses',
@@ -142,21 +142,21 @@ export const seed = async (payload: Payload): Promise<void> => {
   // update each product with related products
 
   await Promise.all([
-    await payload.update({
+     payload.update({
       collection: 'products',
       id: product1Doc.id,
       data: {
         relatedProducts: [product2Doc.id, product3Doc.id],
       },
     }),
-    await payload.update({
+     payload.update({
       collection: 'products',
       id: product2Doc.id,
       data: {
         relatedProducts: [product1Doc.id, product3Doc.id],
       },
     }),
-    await payload.update({
+     payload.update({
       collection: 'products',
       id: product3Doc.id,
       data: {
